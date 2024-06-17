@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Countdown to Manju Aunty's Birthday</title>
+  <link rel="stylesheet" href="flexbox-center-container.css" media="all">
+  <link rel="stylesheet" href="system-fonts.css" media="all">
+  <link rel="stylesheet" href="style1.css" media="all">
+  <style>
+    /* Your additional CSS styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background: #fff;
+      overflow: hidden;
+      background-image: url(.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    #msg {
+      color: #61b752;
+      margin-top: -40px;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <audio id="birthdaySong" loop>
+    <source src="HBDsong.mp3" type="audio/mp3">
+  </audio>
+  <canvas id="c"></canvas>
+  <canvas id="confetti"></canvas>
+  <div class="container" id="count">
+    <h1 id="head">Countdown to your birthday:</h1>
+    <ul>
+      <li><span id="day"></span>days</li>
+      <li><span id="hour"></span>hours</li>
+      <li><span id="minute"></span>minutes</li>
+      <li><span id="second"></span>seconds</li>
+    </ul>
+  </div>
+  <div id="merrywrap" class="merrywrap">
+    <canvas id="snowfall"></canvas>
+    <div class="giftbox" onclick="openGiftBox()">
+      <div class="cover">
+        <div></div>
+      </div>
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <script src="confetti.min.js" charset="utf-8"></script>
+  <script src="index.js" charset="utf-8"></script>
+  <script>
+    // Function to open the gift box and play the birthday song
+    function openGiftBox() {
+      // Play the birthday song
+      var birthdaySong = document.getElementById('birthdaySong');
+      birthdaySong.play();
+
+      // Trigger the animation sequence
+      var giftbox = document.querySelector('.giftbox');
+      giftbox.classList.add('step-1');
+      setTimeout(function() {
+        giftbox.classList.add('step-2');
+      }, 500);
+      setTimeout(function() {
+        giftbox.classList.add('step-3');
+      }, 2500);
+    }
+  </script>
+</body>
+
+</html>
