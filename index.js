@@ -4,8 +4,8 @@ const giftbox = document.getElementById('merrywrap');
 const canvasC = document.getElementById('c');
 
 const config = {
-  birthdate: 'August 21, 2024',
-  name: 'Anil Mama'
+  birthdate: 'September 7, 2024',
+  name: 'Asmita Vahini'
 };
 
 function hideEverything() {
