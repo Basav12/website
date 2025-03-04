@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Video</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+        .video-container {
+            position: relative;
+            width: 90%; /* Ensures responsiveness */
+            max-width: 800px; /* Limits maximum size */
+        }
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .play-button.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <video id="myVideo" controls>
+            <source src="I%20have%20something%20to%20say.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button id="playButton" class="play-button">▶</button>
+    </div>
+
+    <script>
+        const video = document.getElementById("myVideo");
+        const playButton = document.getElementById("playButton");
+
+        function hidePlayButton() {
+            playButton.classList.add("hidden");
+        }
+
+        playButton.addEventListener("click", function() {
+            video.play();
+            hidePlayButton();
+        });
+
+        video.addEventListener("play", hidePlayButton);
+        video.addEventListener("pause", function() {
+            playButton.classList.remove("hidden");
+        });
+    </script>
+</body>
+</html>
