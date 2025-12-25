@@ -23,29 +23,36 @@ html, body {
   position: fixed;
   width: 100%;
   top: -10px;
-  font-size: 24px;
+  font-size: 22px;
   animation: floatHearts 12s linear infinite;
   z-index: -1;
 }
 
-/* Glass effect */
+/* Glass container */
 .glass {
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(12px);
+  border-radius: 22px;
   margin: 30px auto;
   padding: 30px 15px;
   max-width: 520px;
 }
 
-/* Titles */
-.romantic-title {
+/* RED GLOW TITLE */
+.anniversary-glow {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(42px,8vw,70px);
-  color: #fff;
-  text-shadow: 0 0 25px rgba(255,255,255,0.6);
+  font-size: clamp(44px,9vw,72px);
+  color: #ff0033;
+  margin-bottom: 15px;
+  text-shadow:
+    0 0 5px #ff0033,
+    0 0 10px #ff3355,
+    0 0 20px #ff4d6d,
+    0 0 40px rgba(255,0,51,0.9);
+  animation: glowPulse 2.5s ease-in-out infinite;
 }
 
+/* Subtitle */
 .romantic-subtitle {
   font-family: 'Great Vibes', cursive;
   font-size: clamp(32px,6vw,50px);
@@ -89,7 +96,7 @@ button {
   border-radius: 30px;
   border: none;
   cursor: pointer;
-  margin: 8px;
+  margin-top: 10px;
 }
 
 .romantic-btn {
@@ -97,16 +104,7 @@ button {
   color: white;
 }
 
-.scroll-btn {
-  background: #fff;
-  color: #e91e63;
-}
-
 /* Gallery */
-#gallery-section {
-  margin-bottom: 60px;
-}
-
 .gallery-slider {
   display: flex;
   align-items: center;
@@ -128,9 +126,8 @@ button {
 }
 
 /* Animations */
-.fade-in { animation: fadeIn 2s ease; }
-.zoom-in { animation: zoomIn 2s ease; }
 .fade { animation: fadeImage 1s ease; }
+.zoom-in { animation: zoomIn 2s ease; }
 .pulse { animation: pulse 2s infinite; }
 
 @keyframes gradientBG {
@@ -139,28 +136,29 @@ button {
   100% {background-position: 0% 50%;}
 }
 
-@keyframes fadeIn {
-  from {opacity:0;}
-  to {opacity:1;}
-}
-
-@keyframes zoomIn {
-  from {transform:scale(0.9);}
-  to {transform:scale(1);}
+@keyframes glowPulse {
+  0% {text-shadow: 0 0 5px #ff0033,0 0 10px #ff3355;}
+  50% {text-shadow: 0 0 15px #ff0033,0 0 40px #ff4d6d;}
+  100% {text-shadow: 0 0 5px #ff0033,0 0 10px #ff3355;}
 }
 
 @keyframes fadeImage {
-  from {opacity:0.4;}
-  to {opacity:1;}
+  from {opacity: 0.4;}
+  to {opacity: 1;}
+}
+
+@keyframes zoomIn {
+  from {transform: scale(0.9);}
+  to {transform: scale(1);}
 }
 
 @keyframes pulse {
-  0% {transform:scale(1)}
-  50% {transform:scale(1.07)}
-  100% {transform:scale(1)}
+  0% {transform: scale(1)}
+  50% {transform: scale(1.06)}
+  100% {transform: scale(1)}
 }
 
 @keyframes floatHearts {
-  0% {transform: translateY(0);}
-  100% {transform: translateY(100vh);}
+  from {transform: translateY(0);}
+  to {transform: translateY(100vh);}
 }
