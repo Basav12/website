@@ -1,50 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-  <title>Happy Anniversary</title>
-  <link rel="stylesheet" href="style3.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Anniversary 💖</title>
+
+  <!-- Romantic Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="background-animation"></div>
+<div class="background-animation"></div>
+<div class="hearts"></div>
 
-  <div class="container">
-    <h1 class="fade-in">💖 Happy Anniversary 💖</h1>
+<div class="container glass">
+  <h1 class="fade-in romantic-title">Happy Anniversary</h1>
 
-    <div class="image-wrapper">
-      <img src="PNG14.jpeg" alt="Couple Image" class="main-image zoom-in" />
-      <canvas id="confettiCanvas"></canvas>
-    </div>
-
-    <p class="message fade-in">
-      One year down, forever to go 💕 <br/>
-      Still swiping through our love story…
-    </p>
-
-    <button onclick="playMusicAndShowGallery()" class="pulse">
-      ▶ Play Romantic Tune 🎵
-    </button>
-
-    <button onclick="scrollToSurprises()" class="scroll-btn">
-      ⬇️ Scroll for Memories ⬇️
-    </button>
+  <div class="image-wrapper">
+    <img src="PNG14.jpeg" class="main-image zoom-in" alt="Couple">
+    <canvas id="confettiCanvas"></canvas>
   </div>
 
-  <audio id="bgMusic" src="romantic.mp3" loop></audio>
+  <p class="message black-text">
+    One year down, forever to go 💕<br>
+    Still falling for you every day…
+  </p>
 
-  <div id="surprises">
-    <div id="gallery">
-      <h2>Memorable Moments 📸</h2>
-      <div class="gallery-slider">
-        <button class="gallery-arrow" onclick="prevImage()">❮</button>
-        <img id="galleryImage" class="gallery-img" />
-        <button class="gallery-arrow" onclick="nextImage()">❯</button>
-      </div>
-    </div>
+  <button onclick="playMusicAndStartGallery()" class="pulse romantic-btn">
+    ❤️ Play Romantic Tune 🎵
+  </button>
+
+  <button onclick="scrollToGallery()" class="scroll-btn">
+    ⬇️ Scroll for Memories ⬇️
+  </button>
+</div>
+
+<audio id="bgMusic" src="romantic.mp3" loop></audio>
+
+<div id="gallery-section" class="glass">
+  <h2 class="black-text romantic-subtitle">Memorable Moments</h2>
+
+  <div class="gallery-slider">
+    <button onclick="prevImage()">❮</button>
+    <img id="galleryImage" class="gallery-img fade">
+    <button onclick="nextImage()">❯</button>
   </div>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
