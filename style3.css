@@ -1,47 +1,69 @@
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 html, body {
   margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #0f2027;
-  color: white;
+  font-family: 'Poppins', sans-serif;
   text-align: center;
   overflow-x: hidden;
 }
 
+/* Background */
 .background-animation {
   position: fixed;
   inset: 0;
-  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+  background: linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
   background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
+  animation: gradientBG 18s ease infinite;
+  z-index: -2;
+}
+
+/* Floating hearts */
+.hearts::before {
+  content: "💖 💕 💞 💗 💓";
+  position: fixed;
+  width: 100%;
+  top: -10px;
+  font-size: 24px;
+  animation: floatHearts 12s linear infinite;
   z-index: -1;
 }
 
-.container {
+/* Glass effect */
+.glass {
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  margin: 30px auto;
   padding: 30px 15px;
+  max-width: 520px;
 }
 
-h1 {
-  font-size: clamp(26px, 6vw, 48px);
-  line-height: 1.2;
-  margin-bottom: 15px;
+/* Titles */
+.romantic-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(42px,8vw,70px);
+  color: #fff;
+  text-shadow: 0 0 25px rgba(255,255,255,0.6);
 }
 
-h2 {
-  font-size: clamp(20px, 4.5vw, 32px);
-  margin-bottom: 20px;
+.romantic-subtitle {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(32px,6vw,50px);
 }
 
+/* Black text */
+.black-text {
+  color: #000;
+  font-weight: 500;
+}
+
+/* Message */
 .message {
   font-size: 1.1em;
-  line-height: 1.5;
-  margin-bottom: 25px;
+  line-height: 1.6;
 }
 
+/* Image */
 .image-wrapper {
   position: relative;
   max-width: 420px;
@@ -51,7 +73,7 @@ h2 {
 .main-image {
   width: 100%;
   border-radius: 18px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.4);
+  box-shadow: 0 0 25px rgba(255,255,255,0.6);
 }
 
 #confettiCanvas {
@@ -60,48 +82,56 @@ h2 {
   pointer-events: none;
 }
 
+/* Buttons */
 button {
-  padding: 14px 26px;
+  padding: 14px 28px;
   font-size: 16px;
-  border: none;
   border-radius: 30px;
-  background: #ff4081;
-  color: white;
+  border: none;
   cursor: pointer;
-  margin: 10px auto;
-  max-width: 90%;
+  margin: 8px;
+}
+
+.romantic-btn {
+  background: linear-gradient(45deg,#ff4b7d,#ff85a2);
+  color: white;
 }
 
 .scroll-btn {
-  background: #ffdede;
+  background: #fff;
   color: #e91e63;
+}
+
+/* Gallery */
+#gallery-section {
+  margin-bottom: 60px;
 }
 
 .gallery-slider {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .gallery-img {
   width: 75vw;
   max-width: 320px;
-  border-radius: 15px;
+  border-radius: 18px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
-.gallery-arrow {
-  background: none;
-  border: none;
+.gallery-slider button {
   font-size: 28px;
+  background: none;
   color: #ff4081;
-  cursor: pointer;
 }
 
-#gallery {
-  display: none;
-  margin-top: 40px;
-}
+/* Animations */
+.fade-in { animation: fadeIn 2s ease; }
+.zoom-in { animation: zoomIn 2s ease; }
+.fade { animation: fadeImage 1s ease; }
+.pulse { animation: pulse 2s infinite; }
 
 @keyframes gradientBG {
   0% {background-position: 0% 50%;}
@@ -109,22 +139,28 @@ button {
   100% {background-position: 0% 50%;}
 }
 
-.fade-in { animation: fadeIn 2s ease; }
-.zoom-in { animation: zoomIn 2.5s ease; }
-.pulse { animation: pulse 2s infinite; }
-
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {opacity:0;}
+  to {opacity:1;}
 }
 
 @keyframes zoomIn {
-  from {transform: scale(0.9);}
-  to {transform: scale(1);}
+  from {transform:scale(0.9);}
+  to {transform:scale(1);}
+}
+
+@keyframes fadeImage {
+  from {opacity:0.4;}
+  to {opacity:1;}
 }
 
 @keyframes pulse {
-  0% {transform: scale(1);}
-  50% {transform: scale(1.05);}
-  100% {transform: scale(1);}
+  0% {transform:scale(1)}
+  50% {transform:scale(1.07)}
+  100% {transform:scale(1)}
+}
+
+@keyframes floatHearts {
+  0% {transform: translateY(0);}
+  100% {transform: translateY(100vh);}
 }
