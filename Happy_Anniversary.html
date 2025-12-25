@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Anniversary</title>
+  <link rel="stylesheet" href="style3.css"/>
+</head>
+<body>
+
+  <div class="background-animation"></div>
+
+  <!-- ...existing code... -->
+  <div class="container">
+    <h1 class="fade-in">💖 Happy Anniversary 💖</h1>
+    
+    <div class="image-wrapper" style="position:relative; display:inline-block;">
+      <img src="assets/images/PNG14.jpeg" alt="Couple Image" class="main-image zoom-in" />
+      <canvas id="confettiCanvas"></canvas>
+    </div>
+
+    <p class="message fade-in">
+      One year down, forever to go 💕 Still swiping through our love story…
+    </p>
+
+    <button onclick="playMusicAndShowGallery()" class="pulse">Play Romantic Tune 🎵</button>
+    <br/><br/>
+    <!-- Move the scroll button here, inside .container -->
+    <button onclick="scrollToSurprises()" class="scroll-btn">⬇️ Scroll Down for Surprises ⬇️</button>
+  </div>
+<!-- ...existing code... -->
+  
+  <audio id="bgMusic" src="assets/audio/romantic.mp3" type="audio/mp3"></audio>
+
+  <!-- Surprises Section with Gallery -->
+  <div id="surprises" style="margin-top:60px;">
+    <div id="gallery" style="display:none;">
+      <h2>Memorable Moments 📸</h2>
+      <div class="gallery-slider">
+        <button class="gallery-arrow" onclick="prevImage()">&#8592;</button>
+        <img id="galleryImage" src="assets/images/PNG3.jpeg" alt="Gallery" class="gallery-img"/>
+        <button class="gallery-arrow" onclick="nextImage()">&#8594;</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
