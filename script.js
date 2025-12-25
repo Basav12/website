@@ -22,23 +22,23 @@ function scrollToSurprises() {
 
 // Gallery slider logic
 const galleryImages = [
-  'assets/images/PNG3.jpeg',
-  'assets/images/PNG1.jpeg',
-  'assets/images/PNG2.jpeg',
-'assets/images/PNG4.jpeg',
-'assets/images/PNG5.jpeg',
-'assets/images/PNG6.jpeg',
-'assets/images/PNG7.jpeg',
-'assets/images/PNG8.jpeg',
-'assets/images/PNG9.jpeg',
-'assets/images/PNG10.jpeg',
-'assets/images/PNG11.jpeg',
-'assets/images/PNG12.jpeg',
-'assets/images/PNG13.jpeg',
-'assets/images/PNG15.jpeg',
-'assets/images/PNG16.jpeg',
-'assets/images/PNG17.jpeg',
-'assets/images/PNG18.jpeg'
+  'PNG3.jpeg',
+  'PNG1.jpeg',
+  'PNG2.jpeg',
+'PNG4.jpeg',
+'PNG5.jpeg',
+'PNG6.jpeg',
+'PNG7.jpeg',
+'PNG8.jpeg',
+'PNG9.jpeg',
+'PNG10.jpeg',
+'PNG11.jpeg',
+'PNG12.jpeg',
+'PNG13.jpeg',
+'PNG15.jpeg',
+'PNG16.jpeg',
+'PNG17.jpeg',
+'PNG18.jpeg'
   // Add more image paths as needed
 ];
 let currentImage = 0;
