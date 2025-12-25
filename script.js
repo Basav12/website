@@ -26,12 +26,7 @@ function prevImage() {
 }
 
 function startAutoSlide() {
-  stopAutoSlide();
   autoSlide = setInterval(nextImage, 3500);
-}
-
-function stopAutoSlide() {
-  if (autoSlide) clearInterval(autoSlide);
 }
 
 function playMusicAndStartGallery() {
@@ -45,7 +40,6 @@ function playMusicAndStartGallery() {
 /* Confetti */
 window.onload = () => {
   showImage();
-
   const img = document.querySelector(".main-image");
   const canvas = document.getElementById("confettiCanvas");
   const ctx = canvas.getContext("2d");
