@@ -1,51 +1,29 @@
-function playMusic() {
-  const music = document.getElementById("bgMusic");
-  music.play();
-}
-
-// Play music and show gallery, then scroll to surprises
-function playMusicAndShowGallery() {
-  playMusic();
-  const gallery = document.getElementById('gallery');
-  if (gallery) gallery.style.display = 'block';
-  setTimeout(() => {
-    const surprises = document.getElementById('surprises');
-    if (surprises) surprises.scrollIntoView({ behavior: 'smooth' });
-  }, 500);
-}
-
-// Scroll to surprises section
-function scrollToSurprises() {
-  const surprises = document.getElementById('surprises');
-  if (surprises) surprises.scrollIntoView({ behavior: 'smooth' });
-}
-
-// Gallery slider logic
 const galleryImages = [
-  'PNG3.jpeg',
-  'PNG1.jpeg',
-  'PNG2.jpeg',
-'PNG4.jpeg',
-'PNG5.jpeg',
-'PNG6.jpeg',
-'PNG7.jpeg',
-'PNG8.jpeg',
-'PNG9.jpeg',
-'PNG10.jpeg',
-'PNG11.jpeg',
-'PNG12.jpeg',
-'PNG13.jpeg',
-'PNG15.jpeg',
-'PNG16.jpeg',
-'PNG17.jpeg',
-'PNG18.jpeg'
-  // Add more image paths as needed
+  'PNG3.jpeg','PNG1.jpeg','PNG2.jpeg','PNG4.jpeg',
+  'PNG5.jpeg','PNG6.jpeg','PNG7.jpeg','PNG8.jpeg',
+  'PNG9.jpeg','PNG10.jpeg','PNG11.jpeg','PNG12.jpeg',
+  'PNG13.jpeg','PNG15.jpeg','PNG16.jpeg','PNG17.jpeg','PNG18.jpeg'
 ];
+
 let currentImage = 0;
 
+function playMusic() {
+  document.getElementById("bgMusic").play();
+}
+
+function playMusicAndShowGallery() {
+  playMusic();
+  document.getElementById("gallery").style.display = "block";
+  showGalleryImage();
+  setTimeout(scrollToSurprises, 400);
+}
+
+function scrollToSurprises() {
+  document.getElementById("surprises").scrollIntoView({ behavior: "smooth" });
+}
+
 function showGalleryImage() {
-  const img = document.getElementById('galleryImage');
-  if (img) img.src = galleryImages[currentImage];
+  document.getElementById("galleryImage").src = galleryImages[currentImage];
 }
 
 function prevImage() {
@@ -58,68 +36,35 @@ function nextImage() {
   showGalleryImage();
 }
 
-// Confetti animation over couple image
-window.onload = function () {
-  // Confetti code
+window.onload = () => {
   const img = document.querySelector('.main-image');
   const canvas = document.getElementById("confettiCanvas");
-  if (!img || !canvas) return;
   const ctx = canvas.getContext("2d");
 
-  function resizeCanvas() {
-    canvas.width = img.offsetWidth;
-    canvas.height = img.offsetHeight;
-    canvas.style.width = img.offsetWidth + "px";
-    canvas.style.height = img.offsetHeight + "px";
+  function resize() {
+    canvas.width = img.clientWidth;
+    canvas.height = img.clientHeight;
   }
+  resize();
+  window.addEventListener("resize", resize);
 
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
+  const confetti = Array.from({ length: 120 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 6 + 3,
+    d: Math.random() * 120,
+    color: `hsl(${Math.random() * 360},100%,70%)`
+  }));
 
-  const confettiCount = 150;
-  const confetti = [];
-
-  for (let i = 0; i < confettiCount; i++) {
-    confetti.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height - canvas.height,
-      r: Math.random() * 6 + 4,
-      d: Math.random() * confettiCount,
-      color: `hsl(${Math.random() * 360}, 100%, 70%)`,
-      tilt: Math.floor(Math.random() * 10) - 10,
-      tiltAngleIncrement: (Math.random() * 0.07) + 0.05,
-      tiltAngle: 0
-    });
-  }
-
-  function draw() {
+  setInterval(() => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    confetti.forEach((c) => {
+    confetti.forEach(c => {
       ctx.beginPath();
-      ctx.lineWidth = c.r / 2;
-      ctx.strokeStyle = c.color;
-      ctx.moveTo(c.x + c.tilt + (c.r / 4), c.y);
-      ctx.lineTo(c.x + c.tilt, c.y + c.tilt + (c.r / 4));
-      ctx.stroke();
+      ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
+      ctx.fillStyle = c.color;
+      ctx.fill();
+      c.y += 2;
+      if (c.y > canvas.height) c.y = -5;
     });
-    update();
-  }
-
-  function update() {
-    confetti.forEach((c) => {
-      c.tiltAngle += c.tiltAngleIncrement;
-      c.y += (Math.cos(c.d) + 3 + c.r / 2) / 2;
-      c.x += Math.sin(c.d);
-      c.tilt = Math.sin(c.tiltAngle) * 15;
-      if (c.y > canvas.height) {
-        c.y = -10;
-        c.x = Math.random() * canvas.width;
-      }
-    });
-  }
-
-  setInterval(draw, 20);
-
-  // Show first gallery image if gallery exists
-  showGalleryImage();
+  }, 30);
 };
