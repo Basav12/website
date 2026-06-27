@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://basavarajalagi.in/sitemap.xml
